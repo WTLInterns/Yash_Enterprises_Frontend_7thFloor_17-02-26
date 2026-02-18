@@ -754,7 +754,7 @@ export default function CustomerDetailPage() {
       formData.append("caseId", String(selectedCaseId));
       formData.append("documentName", docType || docFile.name);
       formData.append("description", "");
-      const res = await fetch("api.yashrajent.com/api/case-documents/upload", {
+      const res = await fetch("https://api.yashrajent.com/api/case-documents/upload", {
         method: "POST",
         body: formData,
       });
@@ -787,7 +787,7 @@ export default function CustomerDetailPage() {
 
   function downloadDoc(doc) {
     if (!doc) return;
-    window.open(`api.yashrajent.com/api/case-documents/download/${doc.id}`, "_blank");
+    window.open(`https://api.yashrajent.com/api/case-documents/download/${doc.id}`, "_blank");
   }
 
   const lastModified = useMemo(() => {
@@ -2397,12 +2397,12 @@ async function ensureDealId() {
                           </div>
                           <div className="flex-1 bg-slate-900 p-1">
                             <iframe
-                              src={`api.yashrajent.com/api/case-documents/view/${viewingDoc.id}`}
+                              src={`https://api.yashrajent.com/api/case-documents/view/${viewingDoc.id}`}
                               className="h-full w-full rounded-lg border-0 bg-slate-900"
                               title="PDF Viewer"
                               style={{ minHeight: 'calc(90vh - 80px)' }}
                               onError={(e) => {
-                                window.open(`api.yashrajent.com/api/case-documents/view/${viewingDoc.id}`, '_blank');
+                                window.open(`https://api.yashrajent.com/api/case-documents/view/${viewingDoc.id}`, '_blank');
                                 e.target.style.display = 'none';
                                 const errorDiv = document.createElement('div');
                                 errorDiv.className = 'flex items-center justify-center h-full text-red-600';

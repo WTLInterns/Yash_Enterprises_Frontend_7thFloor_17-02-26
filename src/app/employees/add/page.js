@@ -122,7 +122,7 @@ export default function AddEmployeePage({ onSuccess, isModal = false, editingEmp
     }
     
     try {
-      const response = await fetch(`api.yashrajent.com/api/employees/check-employee-id/${employeeId}`, {
+      const response = await fetch(`https://api.yashrajent.com/api/employees/check-employee-id/${employeeId}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token') || 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkB5YXNoZW50ZXJwcmlzZXMuY29tIiwiaWF0IjoxNzM1ODk2NzQ0LCJleHAiOjE3MzU5ODAzNDR9.test'}`
         }
@@ -153,7 +153,7 @@ export default function AddEmployeePage({ onSuccess, isModal = false, editingEmp
   
   const handleGenerateEmployeeId = async () => {
     try {
-      const response = await fetch('api.yashrajent.com/api/employees/next-employee-id', {
+      const response = await fetch('https://api.yashrajent.com/api/employees/next-employee-id', {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token') || 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkB5YXNoZW50ZXJwcmlzZXMuY29tIiwiaWF0IjoxNzM1ODk2NzQ0LCJleHAiOjE3MzU5ODAzNDR9.test'}`
         }

@@ -33,6 +33,7 @@
     "tailwindcss": "^4"
   },
   "overrides": {
-    "undici": "^6.23.0"
+    "undici": "^6.23.0",
+    "ajv": "^8.18.0"
   }
 }

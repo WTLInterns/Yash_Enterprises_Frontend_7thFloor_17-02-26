@@ -24,7 +24,7 @@ class WebSocketService {
     return new Promise((resolve, reject) => {
       try {
         // Use SockJS for WebSocket connection
-        const socket = new SockJS('api.yashrajent.com/ws');
+        const socket = new SockJS('https://api.yashrajent.com/ws');
         
         this.client = new Client({
           webSocketFactory: () => socket,

@@ -48,10 +48,10 @@ export default function SettingsPage() {
     const fetchSettings = async () => {
       try {
         const [generalRes, securityRes, notificationsRes, systemRes] = await Promise.all([
-          fetch('api.yashrajent.com/api/settings/general'),
-          fetch('api.yashrajent.com/api/settings/security'),
-          fetch('api.yashrajent.com/api/settings/notifications'),
-          fetch('api.yashrajent.com/api/settings/system')
+          fetch('https://api.yashrajent.com/api/settings/general'),
+          fetch('https://api.yashrajent.com/api/settings/security'),
+          fetch('https://api.yashrajent.com/api/settings/notifications'),
+          fetch('https://api.yashrajent.com/api/settings/system')
         ]);
 
         if (generalRes.ok) {
@@ -84,7 +84,7 @@ export default function SettingsPage() {
   const handleSaveSettings = async (category) => {
     setLoading(true);
     try {
-      const response = await fetch(`api.yashrajent.com/api/settings/${category}`, {
+      const response = await fetch(`https://api.yashrajent.com/api/settings/${category}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

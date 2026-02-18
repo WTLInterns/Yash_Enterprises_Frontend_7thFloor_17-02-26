@@ -36,7 +36,7 @@ export function createApiClient({ baseUrl = "" } = {}) {
         errorData = { message: text || res.statusText };
       }
       
-      const errorMessage = errorData.message || `Request failed (${res.status})`;
+      const errorMessage = errorData.message || errorData.error || `Request failed (${res.status})`;
       const error = new Error(errorMessage);
       error.status = res.status;
       error.data = errorData;
@@ -78,7 +78,7 @@ export function createApiClient({ baseUrl = "" } = {}) {
   return { get, post, put, delete: del };
 }
 
-export const backendApi = createApiClient({ baseUrl: "api.yashrajent.com/api" });
+export const backendApi = createApiClient({ baseUrl: "https://api.yashrajent.com/api" });
 
 export function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));

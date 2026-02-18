@@ -171,8 +171,11 @@ export default function LoginPage() {
         toast.error("Invalid credentials");
       }
     } catch (err) {
-      toast.error(err?.response?.data?.message || "Login Failed");
-      console.log("Login error:", err);
+      const message = err?.data?.message || err?.data?.error || err?.message || "Login Failed";
+      toast.error(message);
+      console.error("Login error:", err);
+      console.error("Error data:", err?.data);
+      console.error("Error status:", err?.status);
     } finally {
       setLoading(false);
     }

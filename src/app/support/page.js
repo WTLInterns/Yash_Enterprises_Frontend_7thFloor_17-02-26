@@ -16,7 +16,7 @@ export default function SupportPage() {
     // Fetch support tickets from backend API
     const fetchTickets = async () => {
       try {
-        const response = await fetch('api.yashrajent.com/api/support-tickets');
+        const response = await fetch('https://api.yashrajent.com/api/support-tickets');
         if (response.ok) {
           const data = await response.json();
           setTickets(data);
@@ -83,7 +83,7 @@ export default function SupportPage() {
     }
 
     try {
-      const response = await fetch('api.yashrajent.com/api/support-tickets', {
+      const response = await fetch('https://api.yashrajent.com/api/support-tickets', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -99,7 +99,7 @@ export default function CustomersPage() {
       const customersWithAddresses = await Promise.all(
         customersData.map(async (customer) => {
           try {
-            const addressesResponse = await fetch(`api.yashrajent.com/api/clients/${customer.id}/addresses`);
+            const addressesResponse = await fetch(`https://api.yashrajent.com/api/clients/${customer.id}/addresses`);
             if (addressesResponse.ok) {
               const addresses = await addressesResponse.json();
               const primaryAddress = addresses.find(addr => addr.addressType === 'PRIMARY');
@@ -307,7 +307,7 @@ export default function CustomersPage() {
     }
 
     try {
-      const response = await fetch('api.yashrajent.com/api/clients/geocode', {
+      const response = await fetch('https://api.yashrajent.com/api/clients/geocode', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -364,7 +364,7 @@ export default function CustomersPage() {
     }
 
     try {
-      const response = await fetch('api.yashrajent.com/api/clients/reverse-geocode', {
+      const response = await fetch('https://api.yashrajent.com/api/clients/reverse-geocode', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -465,7 +465,7 @@ export default function CustomersPage() {
         clientApi.getById(customer.id),
         backendApi.get(`/deals?clientId=${customer.id}`).catch(() => []),
         clientApi.getFieldValuesAsMap(customer.id).catch(() => ({})),
-        fetch(`api.yashrajent.com/api/clients/${customer.id}/addresses`).then(res => res.ok ? res.json() : []).catch(() => [])
+        fetch(`https://api.yashrajent.com/api/clients/${customer.id}/addresses`).then(res => res.ok ? res.json() : []).catch(() => [])
       ]);
 
       const dealList = normalizeList(customerDeal);
@@ -662,7 +662,7 @@ export default function CustomersPage() {
       if (selectedCustomer?.id) {
         savedCustomer = await clientApi.update(selectedCustomer.id, customerPayload);
         // Update addresses using POST for existing customer (backend uses upsert)
-        await fetch(`api.yashrajent.com/api/clients/${savedCustomer.id}/addresses`, {
+        await fetch(`https://api.yashrajent.com/api/clients/${savedCustomer.id}/addresses`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(addresses)
@@ -671,7 +671,7 @@ export default function CustomersPage() {
         // Create customer first
         savedCustomer = await clientApi.create(customerPayload);
         // Then create addresses using POST for new customer
-        await fetch(`api.yashrajent.com/api/clients/${savedCustomer.id}/addresses`, {
+        await fetch(`https://api.yashrajent.com/api/clients/${savedCustomer.id}/addresses`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(addresses)
@@ -1586,7 +1586,7 @@ export default function CustomersPage() {
                               
                               if (bankId) {
                                 try {
-                                  const response = await fetch(`api.yashrajent.com/api/banks/${bankId}`);
+                                  const response = await fetch(`https://api.yashrajent.com/api/banks/${bankId}`);
                                   if (response.ok) {
                                     const bank = await response.json();
                                     setForm(prev => ({ 
