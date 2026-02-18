@@ -142,7 +142,7 @@ export default function AdminDashboard() {
     setLoadingTokens(true);
     try {
       const token = localStorage.getItem("auth_token");
-      const response = await fetch("http://localhost:8080/api/notifications/tokens", {
+      const response = await fetch("api.yashrajent.com/api/notifications/tokens", {
         headers: {
           "Authorization": `Bearer ${token}`,
           "Content-Type": "application/json"

@@ -78,7 +78,7 @@ export function createApiClient({ baseUrl = "" } = {}) {
   return { get, post, put, delete: del };
 }
 
-export const backendApi = createApiClient({ baseUrl: "http://localhost:8080/api" });
+export const backendApi = createApiClient({ baseUrl: "api.yashrajent.com/api" });
 
 export function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));

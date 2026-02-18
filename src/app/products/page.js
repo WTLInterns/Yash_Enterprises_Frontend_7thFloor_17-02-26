@@ -183,7 +183,7 @@ export default function ProductsPage() {
     try {
       const [freshProduct, fieldValues] = await Promise.all([
         backendApi.get(`/products/${product.id}`),
-        fetch(`http://localhost:8080/api/field-values?entity=product&entityId=${product.id}`).then(r => r.json()).catch(() => [])
+        fetch(`api.yashrajent.com/api/field-values?entity=product&entityId=${product.id}`).then(r => r.json()).catch(() => [])
       ]);
 
       // Convert field values to object
@@ -264,7 +264,7 @@ export default function ProductsPage() {
 
       // Save custom field values
       if (form.customFields && Object.keys(form.customFields).length > 0) {
-        await fetch(`http://localhost:8080/api/field-values/batch?entity=product&entityId=${savedId}`, {
+        await fetch(`api.yashrajent.com/api/field-values/batch?entity=product&entityId=${savedId}`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(form.customFields)
