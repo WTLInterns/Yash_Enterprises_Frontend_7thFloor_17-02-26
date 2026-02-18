@@ -606,7 +606,7 @@ function TaskModal({ task, employees, customFields, onClose, onSave }) {
 
   const handleCreateCustomField = async () => {
     try {
-      const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "https://api.yashrajent.com";
+      const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "";
 
       const payload = {
         customTaskType: formData.customTaskType,

@@ -144,12 +144,18 @@ export default function LoginPage() {
     try {
       const response = await backendApi.post("/auth/login", {
         login_type: "email",
-        email: username, // Send as email field
+        email: username.trim(),
         password: password,
-        organization: organization,
+        organization: organization.trim(),
       });
 
       console.log("Login response:", response);
+      console.log("Request payload:", {
+        login_type: "email",
+        email: username.trim(),
+        password: password,
+        organization: organization.trim(),
+      });
 
       if (response?.message === "Login successful" && response?.token) {
         localStorage.setItem("auth_token", response.token);
